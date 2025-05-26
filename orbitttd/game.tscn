@@ -1,0 +1,128 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcw5qxr626alb"]
+
+[ext_resource type="Script" uid="uid://bewq0gs2fmspm" path="res://sun.gd" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://bm6xv0dinueal" path="res://ship.gd" id="1_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://q36yuym6hols" path="res://icon.svg" id="2_feb5d"]
+[ext_resource type="Script" uid="uid://cs0ukegxykjhv" path="res://planet.gd" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://ckusd74dv4o3x" path="res://stars.png" id="6_ryrav"]
+
+[sub_resource type="Gradient" id="Gradient_fc0e3"]
+offsets = PackedFloat32Array(0.337662, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.999999, 0.992918, 0.646026, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7jktm"]
+gradient = SubResource("Gradient_fc0e3")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_7jktm"]
+offsets = PackedFloat32Array(0.0333333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.00392157)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryrav"]
+radius = 86.56
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7jktm"]
+radius = 19.5
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(450, 0)
+script = ExtResource("1_fc0e3")
+
+[node name="Icon" type="Sprite2D" parent="Node2D"]
+scale = Vector2(0.1875, 0.484375)
+texture = ExtResource("2_feb5d")
+
+[node name="Sun" type="Node2D" parent="."]
+script = ExtResource("1_e2o6t")
+mass = 500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Sun"]
+texture = ExtResource("2_feb5d")
+
+[node name="Planet" type="Node2D" parent="." node_paths=PackedStringArray("parentPlanet", "cities")]
+position = Vector2(250, 0)
+script = ExtResource("3_feb5d")
+parentPlanet = NodePath("../Sun")
+cities = [null]
+mass = 50.0
+speed = 47.9
+rotationSpeed = 14.0
+
+[node name="Icon" type="Sprite2D" parent="Planet"]
+texture = ExtResource("2_feb5d")
+
+[node name="Node2D" type="Node2D" parent="Planet"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Planet/Node2D"]
+visible = false
+scale = Vector2(3, 3)
+color = Color(1, 0.854902, 0, 1)
+energy = 2.5
+blend_mode = 2
+texture = SubResource("GradientTexture2D_7jktm")
+
+[node name="Planet" type="Node2D" parent="Planet" node_paths=PackedStringArray("parentPlanet", "cities")]
+position = Vector2(250, 50)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_feb5d")
+parentPlanet = NodePath("..")
+cities = [null]
+mass = 5.0
+speed = 600.0
+rotationSpeed = 1.0
+
+[node name="Icon" type="Sprite2D" parent="Planet/Planet"]
+texture = ExtResource("2_feb5d")
+
+[node name="Node2D" type="Node2D" parent="Planet/Planet"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Planet/Planet/Node2D"]
+visible = false
+scale = Vector2(3, 3)
+color = Color(1, 0.854902, 0, 1)
+energy = 2.5
+blend_mode = 2
+texture = SubResource("GradientTexture2D_7jktm")
+
+[node name="Line2D" type="Line2D" parent="Planet/Planet"]
+z_index = -1
+scale = Vector2(2, 2)
+gradient = SubResource("Gradient_7jktm")
+
+[node name="Area2D" type="Area2D" parent="Planet/Planet"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/Planet/Area2D"]
+shape = SubResource("CircleShape2D_ryrav")
+
+[node name="Line2D" type="Line2D" parent="Planet"]
+z_index = -1
+position = Vector2(-250, 0)
+gradient = SubResource("Gradient_7jktm")
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Area2D" type="Area2D" parent="Planet"]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/Area2D"]
+scale = Vector2(8.415, 8.415)
+shape = SubResource("CircleShape2D_7jktm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.4, 0.4)
+
+[node name="Buildings" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(5.99994, -6.00009)
+scale = Vector2(5.768, 4.31467)
+texture = ExtResource("6_ryrav")
+
+[connection signal="input_event" from="Planet/Planet/Area2D" to="Planet/Planet" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Planet/Area2D" to="Planet" method="_on_area_2d_input_event"]

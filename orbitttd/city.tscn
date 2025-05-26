@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dypf75xmrqkfu"]
+
+[ext_resource type="Script" uid="uid://dcvfgkuafpfl7" path="res://City.gd" id="1_m7k8b"]
+[ext_resource type="Texture2D" uid="uid://q36yuym6hols" path="res://icon.svg" id="2_o3tkm"]
+
+[node name="City" type="Node2D"]
+script = ExtResource("1_m7k8b")
+pop = 1000.0
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, -65)
+scale = Vector2(0.15625, 0.128906)
+texture = ExtResource("2_o3tkm")
