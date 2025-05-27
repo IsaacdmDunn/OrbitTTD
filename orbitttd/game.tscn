@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcw5qxr626alb"]
+[gd_scene load_steps=13 format=3 uid="uid://bcw5qxr626alb"]
 
 [ext_resource type="Script" uid="uid://bewq0gs2fmspm" path="res://scripts/sun.gd" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://bm6xv0dinueal" path="res://scripts/ship.gd" id="1_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://q36yuym6hols" path="res://images/icon.svg" id="2_feb5d"]
 [ext_resource type="Script" uid="uid://cs0ukegxykjhv" path="res://scripts/planet.gd" id="3_feb5d"]
+[ext_resource type="Script" uid="uid://bm13ldj5ivoe8" path="res://scripts/CameraControls.gd" id="5_eow3j"]
 [ext_resource type="PackedScene" uid="uid://vufb03hbc3fv" path="res://Prefabs/Buildings/TestHouse.tscn" id="5_ryrav"]
 [ext_resource type="Texture2D" uid="uid://ckusd74dv4o3x" path="res://images/stars.png" id="6_ryrav"]
 
@@ -148,16 +149,21 @@ shape = SubResource("CircleShape2D_7jktm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.3, 0.3)
+script = ExtResource("5_eow3j")
+cameraSpeed = 2.16
+zoomAmount = 1.0
+zoomChange = 0.3
+zoomInLimit = 3.0
+zoomOutLimit = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+z_index = -5
+scale = Vector2(5.768, 4.31467)
+texture = ExtResource("6_ryrav")
 
 [node name="Buildings" type="Node2D" parent="."]
 
 [node name="TestHouse" parent="Buildings" instance=ExtResource("5_ryrav")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -5
-position = Vector2(5.99994, -6.00009)
-scale = Vector2(5.768, 4.31467)
-texture = ExtResource("6_ryrav")
 
 [connection signal="input_event" from="Planet2/Area2D" to="Planet2" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="Planet/moon/Area2D" to="Planet/moon" method="_on_area_2d_input_event"]

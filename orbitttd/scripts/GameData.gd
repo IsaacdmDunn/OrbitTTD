@@ -2,6 +2,8 @@ extends Node
 
 enum GameResources {Housing, Food, Water, Concrete, Chemicals, Metal, RareMetal, Fuel}
 
+var cameraTarget: Node2D = null
+
 var pop = 0
 
 func _process(delta: float) -> void:
