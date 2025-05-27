@@ -6,13 +6,13 @@ extends SpaceBody
 @export var cities: Array[Node2D]
 var distanceToParent: float
 var d = 0
-var zoom = 3
+@export var zoom = 1
 var pos
 
 var lineTimer = 0
 func _ready() -> void:
 	add_to_group("Sol")
-	distanceToParent = self.position.distance_to(parentPlanet.position) * zoom
+	distanceToParent = self.position.distance_to(parentPlanet.position) / zoom
 	
 	
 	print(parentPlanet.position)
@@ -36,11 +36,14 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if Input.is_action_just_pressed("Select"):
-		print(cities[0].pop)
 		print("adknkdjan")
 	if Input.is_action_just_pressed("DebugAddCity"):
-		var cityToAdd = cityPrefab.instantiate()
+		var cityToAdd = GamePrefabs.cityPrefab.instantiate()
 		add_child(cityToAdd)
-	if Input.is_action_just_pressed("DebugAddBuilding"):
-		print("buildin")
+	if Input.is_action_just_pressed("DebugAddBuilding") and get_tree().get_nodes_in_group("City").size() > 0:
+		var earthSlumsToAdd = GamePrefabs.earthSlumsPrefab.instantiate()
+		
+		get_tree().get_first_node_in_group("City").buildings.append(earthSlumsToAdd)
+		get_tree().get_first_node_in_group("City").add_child(earthSlumsToAdd)
+		earthSlumsToAdd.InitBuilding(0)
 	pass # Replace with function body.

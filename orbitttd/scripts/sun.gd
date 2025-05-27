@@ -1,4 +1,5 @@
 extends SpaceBody
+class_name Star
 var pos
 func _ready() -> void:
 	add_to_group("Sol")

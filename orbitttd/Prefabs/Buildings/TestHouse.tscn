@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://vufb03hbc3fv"]
+
+[ext_resource type="Script" uid="uid://bkr26jhchq275" path="res://scripts/Building.gd" id="1_8qv07"]
+
+[node name="TestHouse" type="Node2D"]
+script = ExtResource("1_8qv07")
+peopleRequired = 10.0
+resourcesRequiredID = Array[int]([1])
+resourcesRequired = Array[float]([1000.0])
+resourcesProducedID = Array[int]([0])
+resourcesProduced = Array[float]([1000.0])
