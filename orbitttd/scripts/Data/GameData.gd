@@ -1,7 +1,7 @@
 extends Node
 
-enum GameResources {Housing, Food, Water, Concrete, Chemicals, Metal, RareMetal, Fuel}
-
+enum GameResources {Housing, Food, Water, Concrete, Chemicals, Metal, RareMetal, Volatiles, Fuel, Energy}
+enum UIState {None, Planet, City, Building, Ship}
 var cameraTarget: Node2D = null
 
 var pop = 0

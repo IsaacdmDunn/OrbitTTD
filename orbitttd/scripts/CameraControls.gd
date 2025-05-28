@@ -11,8 +11,6 @@ func _process(delta: float) -> void:
 	if GameData.cameraTarget == null:
 	
 		if Input.is_action_pressed("MoveCameraLeft"):
-			print(position)
-		
 			position.x-=cameraSpeed/zoomAmount
 		elif Input.is_action_pressed("MoveCameraRight"):
 			position.x+=cameraSpeed/zoomAmount

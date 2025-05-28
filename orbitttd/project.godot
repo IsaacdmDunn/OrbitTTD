@@ -17,8 +17,9 @@ config/icon="res://images/icon.svg"
 
 [autoload]
 
-GameData="*res://scripts/GameData.gd"
-GamePrefabs="*res://scripts/GamePrefabs.gd"
+GameData="*res://scripts/Data/GameData.gd"
+GamePrefabs="*res://scripts/Data/GamePrefabs.gd"
+UiManager="*res://scripts/UI/UIManager.gd"
 
 [input]
 

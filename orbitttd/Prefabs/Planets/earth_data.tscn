@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctjmrk0lr32o5"]
+
+[ext_resource type="Script" uid="uid://b8nq6m5oslabh" path="res://scripts/Data/PlanetData.gd" id="1_jtsn4"]
+[ext_resource type="Texture2D" uid="uid://q36yuym6hols" path="res://images/icon.svg" id="2_700fl"]
+
+[node name="EarthData" type="Node"]
+script = ExtResource("1_jtsn4")
+planetName = "Earth"
+planetType = 4
+population = 8000.0
+planetTexture = ExtResource("2_700fl")
+maxBaseHousing = 1000
+maxBaseFarms = 100
+maxBaseWater = -1
+maxBaseVolitileMine = 25
+maxBaseMetalMine = 10
+maxBaseRareMetalMine = 2
+maxBaseOilWell = 2

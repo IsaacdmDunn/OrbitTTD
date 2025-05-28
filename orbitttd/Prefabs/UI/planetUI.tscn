@@ -1,0 +1,187 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsrbqmmsmsvwy"]
+
+[ext_resource type="Script" uid="uid://cw5mhcnfuubvg" path="res://scripts/UI/PlanetUIData.gd" id="1_15rav"]
+[ext_resource type="Texture2D" uid="uid://q36yuym6hols" path="res://images/icon.svg" id="1_lpadn"]
+[ext_resource type="Script" uid="uid://cwg0ibqivcqp5" path="res://scripts/UI/PlanetInfoUI.gd" id="2_g3b2w"]
+
+[node name="PlanetUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 35.0
+offset_right = -699.0
+offset_bottom = -165.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_15rav")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabBar" type="TabBar" parent="Panel"]
+custom_minimum_size = Vector2(376, 35)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -35.0
+grow_horizontal = 2
+current_tab = 0
+tab_count = 4
+tab_0/title = "Planet"
+tab_1/title = "Cities"
+tab_2/title = "Buildings"
+tab_3/title = "Resources"
+
+[node name="PlanetPanel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_g3b2w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PlanetPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="PlanetName" type="Panel" parent="Panel/PlanetPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="PlanetName" type="Label" parent="Panel/PlanetPanel/VBoxContainer/PlanetName"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_right = 376.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 32
+text = "Planet Test Text Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlanetTexture" type="TextureRect" parent="Panel/PlanetPanel/VBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("1_lpadn")
+stretch_mode = 3
+
+[node name="PlanetType" type="Panel" parent="Panel/PlanetPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PlanetPanel/VBoxContainer/PlanetType"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PTLabel" type="Label" parent="Panel/PlanetPanel/VBoxContainer/PlanetType/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Planet Type: "
+vertical_alignment = 1
+
+[node name="PTData" type="Label" parent="Panel/PlanetPanel/VBoxContainer/PlanetType/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Rocky metalic"
+horizontal_alignment = 2
+
+[node name="Population" type="Panel" parent="Panel/PlanetPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PlanetPanel/VBoxContainer/Population"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopLabel" type="Label" parent="Panel/PlanetPanel/VBoxContainer/Population/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Population:"
+vertical_alignment = 1
+
+[node name="PopData" type="Label" parent="Panel/PlanetPanel/VBoxContainer/Population/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "8.41Bn"
+horizontal_alignment = 2
+
+[node name="CityCount" type="Panel" parent="Panel/PlanetPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PlanetPanel/VBoxContainer/CityCount"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CityLabel" type="Label" parent="Panel/PlanetPanel/VBoxContainer/CityCount/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Cities:"
+vertical_alignment = 1
+
+[node name="CityCount" type="Label" parent="Panel/PlanetPanel/VBoxContainer/CityCount/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "51"
+horizontal_alignment = 2
+
+[node name="BuildingCount" type="Panel" parent="Panel/PlanetPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PlanetPanel/VBoxContainer/BuildingCount"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BuildingLabel" type="Label" parent="Panel/PlanetPanel/VBoxContainer/BuildingCount/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Buildings:"
+vertical_alignment = 1
+
+[node name="BuildingCount" type="Label" parent="Panel/PlanetPanel/VBoxContainer/BuildingCount/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2

@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcw5qxr626alb"]
+[gd_scene load_steps=14 format=3 uid="uid://bcw5qxr626alb"]
 
 [ext_resource type="Script" uid="uid://bewq0gs2fmspm" path="res://scripts/sun.gd" id="1_e2o6t"]
 [ext_resource type="Script" uid="uid://bm6xv0dinueal" path="res://scripts/ship.gd" id="1_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://q36yuym6hols" path="res://images/icon.svg" id="2_feb5d"]
 [ext_resource type="Script" uid="uid://cs0ukegxykjhv" path="res://scripts/planet.gd" id="3_feb5d"]
 [ext_resource type="Script" uid="uid://bm13ldj5ivoe8" path="res://scripts/CameraControls.gd" id="5_eow3j"]
+[ext_resource type="PackedScene" uid="uid://ctjmrk0lr32o5" path="res://Prefabs/Planets/earth_data.tscn" id="5_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://vufb03hbc3fv" path="res://Prefabs/Buildings/TestHouse.tscn" id="5_ryrav"]
 [ext_resource type="Texture2D" uid="uid://ckusd74dv4o3x" path="res://images/stars.png" id="6_ryrav"]
 
@@ -44,7 +45,7 @@ mass = 500.0
 [node name="Sprite2D" type="Sprite2D" parent="Sun"]
 texture = ExtResource("2_feb5d")
 
-[node name="Planet2" type="Node2D" parent="." node_paths=PackedStringArray("parentPlanet")]
+[node name="Planet2" type="Node2D" parent="." node_paths=PackedStringArray("parentPlanet", "planetData")]
 position = Vector2(300, 0)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_feb5d")
@@ -52,6 +53,7 @@ parentPlanet = NodePath("../Sun")
 mass = 5.0
 speed = 90.0
 rotationSpeed = 1.0
+planetData = NodePath("MercuryData")
 
 [node name="Icon" type="Sprite2D" parent="Planet2"]
 texture = ExtResource("2_feb5d")
@@ -76,7 +78,18 @@ gradient = SubResource("Gradient_7jktm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planet2/Area2D"]
 shape = SubResource("CircleShape2D_ryrav")
 
-[node name="Planet" type="Node2D" parent="." node_paths=PackedStringArray("parentPlanet", "cities")]
+[node name="MercuryData" parent="Planet2" instance=ExtResource("5_j5wjh")]
+planetName = "Mercury"
+planetType = 3
+maxBaseHousing = 350
+maxBaseFarms = 0
+maxBaseWater = 0
+maxBaseVolitileMine = 10
+maxBaseMetalMine = 55
+maxBaseRareMetalMine = 15
+maxBaseOilWell = 0
+
+[node name="Planet" type="Node2D" parent="." node_paths=PackedStringArray("parentPlanet", "cities", "planetData")]
 position = Vector2(750, 0)
 script = ExtResource("3_feb5d")
 parentPlanet = NodePath("../Sun")
@@ -84,6 +97,7 @@ cities = [null]
 mass = 50.0
 speed = 47.9
 rotationSpeed = 14.0
+planetData = NodePath("EarthData")
 
 [node name="Icon" type="Sprite2D" parent="Planet"]
 texture = ExtResource("2_feb5d")
@@ -98,7 +112,7 @@ energy = 2.5
 blend_mode = 2
 texture = SubResource("GradientTexture2D_7jktm")
 
-[node name="moon" type="Node2D" parent="Planet" node_paths=PackedStringArray("parentPlanet")]
+[node name="moon" type="Node2D" parent="Planet" node_paths=PackedStringArray("parentPlanet", "planetData")]
 position = Vector2(200, 0)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_feb5d")
@@ -107,6 +121,7 @@ zoom = 3
 mass = 5.0
 speed = 600.0
 rotationSpeed = 1.0
+planetData = NodePath("MoonData")
 
 [node name="Icon" type="Sprite2D" parent="Planet/moon"]
 texture = ExtResource("2_feb5d")
@@ -131,6 +146,16 @@ gradient = SubResource("Gradient_7jktm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/moon/Area2D"]
 shape = SubResource("CircleShape2D_ryrav")
 
+[node name="MoonData" parent="Planet/moon" instance=ExtResource("5_j5wjh")]
+planetName = "Moon (Luna)"
+planetType = 2
+maxBaseHousing = 250
+maxBaseFarms = 0
+maxBaseWater = 5
+maxBaseVolitileMine = 3
+maxBaseMetalMine = 15
+maxBaseOilWell = 0
+
 [node name="Line2D" type="Line2D" parent="Planet"]
 z_index = -1
 position = Vector2(-250, 0)
@@ -147,6 +172,8 @@ scale = Vector2(0.5, 0.5)
 scale = Vector2(8.415, 8.415)
 shape = SubResource("CircleShape2D_7jktm")
 
+[node name="EarthData" parent="Planet" instance=ExtResource("5_j5wjh")]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.3, 0.3)
 script = ExtResource("5_eow3j")
@@ -158,12 +185,15 @@ zoomOutLimit = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
 z_index = -5
+position = Vector2(-79, 86)
 scale = Vector2(5.768, 4.31467)
 texture = ExtResource("6_ryrav")
 
 [node name="Buildings" type="Node2D" parent="."]
 
 [node name="TestHouse" parent="Buildings" instance=ExtResource("5_ryrav")]
+
+[node name="UI" type="CanvasLayer" parent="." groups=["UI"]]
 
 [connection signal="input_event" from="Planet2/Area2D" to="Planet2" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="Planet/moon/Area2D" to="Planet/moon" method="_on_area_2d_input_event"]
