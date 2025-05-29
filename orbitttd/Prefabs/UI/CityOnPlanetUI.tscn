@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4vjdf4cotraw"]
+
+[ext_resource type="Script" uid="uid://ikvxs6dhnnwk" path="res://scripts/UI/CityOnPlanetUI.gd" id="1_h67ia"]
+[ext_resource type="Texture2D" uid="uid://q36yuym6hols" path="res://images/icon.svg" id="2_l2dqc"]
+[ext_resource type="Texture2D" uid="uid://w3ig7p5sjhf" path="res://images/look at icon.png" id="3_t1v4j"]
+[ext_resource type="Texture2D" uid="uid://curdlkki06d2f" path="res://images/look at pressed icon.png" id="4_mxge7"]
+
+[node name="CityOnPlanetUI" type="Panel"]
+custom_minimum_size = Vector2(0, 96)
+script = ExtResource("1_h67ia")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CityTexture" type="TextureRect" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_l2dqc")
+expand_mode = 2
+
+[node name="CityName" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 36)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "CityName"
+clip_text = true
+
+[node name="PopulationText" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "0m"
+clip_text = true
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("3_t1v4j")
+texture_pressed = ExtResource("4_mxge7")
+stretch_mode = 5
+
+[connection signal="pressed" from="HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

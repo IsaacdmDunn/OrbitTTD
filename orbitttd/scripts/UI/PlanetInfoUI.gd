@@ -4,9 +4,7 @@ func _ready() -> void:
 	
 	if $"../..".targetPlanet != null:
 		var planetData:PlanetData = $"../..".targetPlanet.planetData
-		print(planetData)
 		$VBoxContainer/PlanetName/PlanetName.text = planetData.planetName
-		print("l;andkjan")
 		SetPlanetType(planetData.planetType)
 		
 		$VBoxContainer/Population/HBoxContainer/PopData.text = str(planetData.population) + "M"

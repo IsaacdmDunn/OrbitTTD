@@ -7,15 +7,15 @@ extends SpaceBody
 var distanceToParent: float
 var d = 0
 @export var zoom = 1
+@export var planetID: int = 0
 var pos
-
 var lineTimer = 0
+
 func _ready() -> void:
+	
 	add_to_group("Sol")
+	planetID = get_tree().get_nodes_in_group("Sol").size()
 	distanceToParent = self.position.distance_to(parentPlanet.position) / zoom
-	
-	
-	print(parentPlanet.position)
 	
 func _process(delta: float) -> void:
 	pos = position
@@ -49,3 +49,11 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		get_tree().get_first_node_in_group("City").add_child(earthSlumsToAdd)
 		earthSlumsToAdd.InitBuilding(0)
 	pass # Replace with function body.
+	
+func AddNewCity(cityName: String):
+	var cityToAdd = GamePrefabs.cityPrefab.instantiate()
+	cityToAdd.cityName = cityName
+	cityToAdd.planetID = planetID
+	cities.append(cityToAdd)
+	add_child(cityToAdd)
+	

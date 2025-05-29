@@ -89,11 +89,10 @@ maxBaseMetalMine = 55
 maxBaseRareMetalMine = 15
 maxBaseOilWell = 0
 
-[node name="Planet" type="Node2D" parent="." node_paths=PackedStringArray("parentPlanet", "cities", "planetData")]
+[node name="Planet" type="Node2D" parent="." node_paths=PackedStringArray("parentPlanet", "planetData")]
 position = Vector2(750, 0)
 script = ExtResource("3_feb5d")
 parentPlanet = NodePath("../Sun")
-cities = [null]
 mass = 50.0
 speed = 47.9
 rotationSpeed = 14.0
@@ -185,7 +184,7 @@ zoomOutLimit = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
 z_index = -5
-position = Vector2(-79, 86)
+position = Vector2(-187, 98)
 scale = Vector2(5.768, 4.31467)
 texture = ExtResource("6_ryrav")
 

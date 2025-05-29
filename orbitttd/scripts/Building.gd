@@ -9,6 +9,11 @@ var efficiencyMult
 @export var resourcesProducedID: Array[GameData.GameResources]
 @export var resourcesProduced: Array[float]
 
+@export var buildingType: String
+@export var tier: int
+@export var level: int
+@export var buildingTexture: Texture2D
+
 func InitBuilding(cityID):
 	city = get_tree().get_nodes_in_group("City")[cityID]
 	print("dajwkda")
