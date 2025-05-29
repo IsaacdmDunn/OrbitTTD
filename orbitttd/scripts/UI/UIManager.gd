@@ -1,6 +1,9 @@
 extends Node
 
 @export var planetUI = preload("res://Prefabs/UI/planetUI.tscn")
+@export var addBuildingUI = preload("res://Prefabs/UI/AddNewBuilding.tscn")
+@export var buildingOption = preload("res://Prefabs/UI/BuildingOptionUI.tscn")
+
 var openUI
 var planetTarget 
 

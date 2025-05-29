@@ -10,5 +10,4 @@ func _process(delta: float) -> void:
 	pop=0
 	for city in get_tree().get_nodes_in_group("City"):
 		pop += city.pop
-	print(get_tree().get_nodes_in_group("City").size())
 	#print(pop)

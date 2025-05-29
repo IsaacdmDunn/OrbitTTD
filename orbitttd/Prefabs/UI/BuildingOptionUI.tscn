@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://doxbcxuiuvt42"]
+
+[ext_resource type="Texture2D" uid="uid://luibggplp2ss" path="res://images/cityIcon.png" id="1_awpy3"]
+[ext_resource type="Script" uid="uid://bxc4qj7v1kgok" path="res://scripts/UI/BuildingOption.gd" id="1_bse4x"]
+
+[node name="BuildingOptionUI" type="Panel"]
+custom_minimum_size = Vector2(0, 100)
+script = ExtResource("1_bse4x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -9.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_awpy3")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="BuildingName" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Default Building"
+
+[node name="Tier" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Tier: 10"
+
+[node name="Upkeep" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Upkeep: 10 workers, 5 metals, 2 water"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+tooltip_text = "Build time: 58 weeks
+Cost: 500 metals, 15 Rare metals"
+text = "Build"

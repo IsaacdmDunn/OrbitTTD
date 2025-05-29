@@ -9,3 +9,4 @@ resourcesRequiredID = Array[int]([1])
 resourcesRequired = Array[float]([1000.0])
 resourcesProducedID = Array[int]([0])
 resourcesProduced = Array[float]([1000.0])
+buildingType = "Test Housing"
