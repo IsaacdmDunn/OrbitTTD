@@ -51,3 +51,5 @@ size_flags_vertical = 4
 tooltip_text = "Build time: 58 weeks
 Cost: 500 metals, 15 Rare metals"
 text = "Build"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

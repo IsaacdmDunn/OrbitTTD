@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://luibggplp2ss" path="res://images/cityIcon.png" id="2_pud5p"]
 
 [node name="BuildingUI" type="Panel"]
-custom_minimum_size = Vector2(0, 96)
+custom_minimum_size = Vector2(525, 96)
 size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_381lv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

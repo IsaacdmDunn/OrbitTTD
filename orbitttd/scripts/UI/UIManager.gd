@@ -14,5 +14,11 @@ func OpenPlanetUI():
 	
 func CloseUI():
 	for ui in get_tree().get_nodes_in_group("UI").size():
+		if ui == 0:
+			continue
 		get_tree().get_nodes_in_group("UI")[ui].queue_free()
+		
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("EscapeMenus"):
+		UiManager.CloseUI()
 	

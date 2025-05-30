@@ -17,3 +17,8 @@ func _process(delta: float) -> void:
 	pop += pop * (birthRate - deathRate)
 	for building in buildings:
 		building.UpdateBuilding()
+		
+func AddBuilding(building):
+	buildings.append(building)
+	building.city = self
+	add_child(building)

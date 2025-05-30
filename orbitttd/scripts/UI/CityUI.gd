@@ -3,7 +3,10 @@ extends Control
 var city:City
 
 func _ready() -> void:
+	add_to_group("UI")
+	print(city)
 	for building in city.buildings:
+		print("dada")
 		AddBuildingInfoUI(building)
 		pass
 	pass
@@ -23,6 +26,7 @@ func AddBuildingInfoUI(building:Node2D):
 
 
 func _on_button_pressed() -> void:
+	UiManager.CloseUI()
 	var buildingMenu = UiManager.addBuildingUI.instantiate()
 	buildingMenu.city = city
 	buildingMenu.buildingToBuild = GamePrefabs.earthSlumsPrefab.instantiate()

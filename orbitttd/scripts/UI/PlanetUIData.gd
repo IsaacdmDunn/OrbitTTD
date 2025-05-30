@@ -1,10 +1,13 @@
 extends Control
 
 
+
 var targetPlanet: Node2D
 enum UITabState {Planet, Cities, Buildings, Resources}
 var currentTabState:UITabState = UITabState.Planet
 
+func _ready() -> void:
+	add_to_group("UI")
 
 func _on_tab_bar_tab_changed(tab: int) -> void:
 	GetTabMenu(tab).visible = true

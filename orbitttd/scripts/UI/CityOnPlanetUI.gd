@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	
 func _on_texture_button_pressed() -> void:
 	#open city UIz
-	#UiManager.CloseUI()
+	UiManager.CloseUI()
 	var CityUIToAdd = GamePrefabs.cityBuildingMenuUI.instantiate()
 	CityUIToAdd.city = city
 	

@@ -18,7 +18,7 @@ func InitBuilding(cityID):
 	city = get_tree().get_nodes_in_group("City")[cityID]
 	if buildingType == null:
 		buildingType = "John"
-	print("dajwkda")
+	print(buildingType)
 func UpdateBuilding():
 	
 	for resourceID in resourcesRequired.size():
