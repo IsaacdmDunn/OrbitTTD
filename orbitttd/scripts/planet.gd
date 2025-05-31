@@ -13,8 +13,8 @@ var lineTimer = 0
 
 func _ready() -> void:
 	
-	add_to_group("Sol")
 	planetID = get_tree().get_nodes_in_group("Sol").size()
+	add_to_group("Sol")
 	distanceToParent = self.position.distance_to(parentPlanet.position) / zoom
 	
 func _process(delta: float) -> void:
