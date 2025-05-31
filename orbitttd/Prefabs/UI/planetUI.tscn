@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsrbqmmsmsvwy"]
+[gd_scene load_steps=7 format=3 uid="uid://bsrbqmmsmsvwy"]
 
 [ext_resource type="Script" uid="uid://cw5mhcnfuubvg" path="res://scripts/UI/PlanetUIData.gd" id="1_15rav"]
 [ext_resource type="Texture2D" uid="uid://q36yuym6hols" path="res://images/icon.svg" id="1_lpadn"]
 [ext_resource type="Script" uid="uid://cwg0ibqivcqp5" path="res://scripts/UI/PlanetInfoUI.gd" id="2_g3b2w"]
 [ext_resource type="Script" uid="uid://ownsiqcmrd0a" path="res://scripts/UI/PlanetCitiesUI.gd" id="4_g3b2w"]
+[ext_resource type="Script" uid="uid://bvrip6ps24n2m" path="res://scripts/UI/ResourcesOnPlanetUI.gd" id="5_st6hp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15rav"]
 bg_color = Color(0.303233, 0.303233, 0.303233, 1)
@@ -195,6 +196,7 @@ text = "0"
 horizontal_alignment = 2
 
 [node name="Cities" type="Panel" parent="Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -278,15 +280,88 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Resources" type="Panel" parent="Panel"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -450.0
+offset_left = -699.0
 offset_right = -450.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("5_st6hp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Resources"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 7.0
+offset_right = -11.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title panel" type="Panel" parent="Panel/Resources/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/Resources/VBoxContainer/title panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Resources"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="labels" type="Panel" parent="Panel/Resources/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Resources/VBoxContainer/labels"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel/Resources/VBoxContainer/labels/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Resource"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/Resources/VBoxContainer/labels/HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "Stored"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Panel/Resources/VBoxContainer/labels/HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "Max"
+
+[node name="Label4" type="Label" parent="Panel/Resources/VBoxContainer/labels/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Gain"
+
+[node name="Label5" type="Label" parent="Panel/Resources/VBoxContainer/labels/HBoxContainer"]
+layout_mode = 2
+text = "Decay"
+
+[node name="ResourcesUI" type="ScrollContainer" parent="Panel/Resources/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Resources/VBoxContainer/ResourcesUI"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [connection signal="tab_changed" from="Panel/TabBar" to="." method="_on_tab_bar_tab_changed"]
 [connection signal="pressed" from="Panel/Cities/VBoxContainer/Add new city/HBoxContainer/Button" to="Panel/Cities" method="_on_button_pressed"]

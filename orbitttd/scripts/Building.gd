@@ -22,8 +22,8 @@ func InitBuilding(cityID):
 func UpdateBuilding():
 	
 	for resourceID in resourcesRequired.size():
-		city.resourcesStored[resourcesRequiredID[resourceID]] -= resourcesRequired[resourceID]
+		city.resourcesGain[resourcesRequiredID[resourceID]] -= resourcesRequired[resourceID]
 		
 	for resourceID in resourcesRequired.size():
-		city.resourcesStored[resourcesProducedID[resourceID]] += resourcesProduced[resourceID]
+		city.resourcesGain[resourcesProducedID[resourceID]] += resourcesProduced[resourceID]
 	

@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://3veuinfhx6va"]
+
+[ext_resource type="Script" uid="uid://d28bhe7hns5a4" path="res://scripts/UI/ResourcesUI.gd" id="1_m6axl"]
+[ext_resource type="Texture2D" uid="uid://luibggplp2ss" path="res://images/cityIcon.png" id="2_e5nts"]
+
+[node name="ResourceUI" type="Panel"]
+custom_minimum_size = Vector2(0, 96)
+script = ExtResource("1_m6axl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = -8.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_e5nts")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ResourceName" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Resource Name"
+
+[node name="Stored" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "100000/"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Max" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "100000"
+
+[node name="Gain" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "12/yr"
+
+[node name="Decay" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "95%"
+horizontal_alignment = 2
