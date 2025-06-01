@@ -12,6 +12,7 @@ var deathRate: float = 2.1
 @export var cityName: String = "Default City Name"
 
 func _ready():
+	#set resources size
 	resourcesStored.resize(GameData.GameResources.size())
 	resourcesStoredMax.resize(GameData.GameResources.size())
 	resourcesGain.resize(GameData.GameResources.size())
@@ -21,18 +22,23 @@ func _ready():
 	add_to_group("City")
 	
 func _process(delta: float) -> void:
+	#reset production and decay values
 	for r in GameData.GameResources.size():
 		resourcesGain[r] = 1
 		resourcesDecay[r] = GameData.resourceBaseDecay[r]
+		
+	#pop growth alg
 	pop += pop * (birthRate - deathRate)
 	
+	#update buildings
 	for building in buildings:
 		building.UpdateBuilding()
-		
+	
+	#add resources
 	for r in GameData.GameResources.size():
 		resourcesStored[r] += resourcesGain[r]
-		
-		
+	
+#add new building to city
 func AddBuilding(building):
 	buildings.append(building)
 	building.city = self

@@ -9,7 +9,7 @@ var cameraTarget: Node2D = null
 var pop = 0
 
 func _process(delta: float) -> void:
-	pop=0
+	pop=0 #reset global pop and recalculate 
 	for city in get_tree().get_nodes_in_group("City"):
 		pop += city.pop
 	#print(pop)

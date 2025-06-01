@@ -7,7 +7,8 @@ func _ready() -> void:
 		var cityUIToAdd = cityUIPrefab.instantiate()
 		cityUIToAdd.city = $"../..".targetPlanet.cities[cities]
 		$VBoxContainer/ScrollContainer/VBoxContainer.add_child(cityUIToAdd)
-		
+
+#create new city with name
 func _on_button_pressed() -> void:
 	#add new city
 	var newCityName = $"VBoxContainer/Add new city/HBoxContainer/TextEdit".text

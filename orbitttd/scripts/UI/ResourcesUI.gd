@@ -10,6 +10,7 @@ var decay: float = 0
 var resourceID 
 var cities
 
+#update ui
 func _process(delta: float) -> void:
 	gain = 0
 	

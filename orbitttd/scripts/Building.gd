@@ -20,10 +20,11 @@ var efficiencyMult
 @export var levelUpCostIncrease: float = 1.2
 @export var levelUpEffect: float = 1.01
 
+#get city data
 func InitBuilding(cityID):
 	city = get_tree().get_nodes_in_group("City")[cityID]
-	if buildingType == null:
-		buildingType = "John"
+	
+#produce and use resources
 func UpdateBuilding():
 	
 	for resourceID in resourcesRequired.size():
@@ -31,7 +32,8 @@ func UpdateBuilding():
 		
 	for resourceID in resourcesRequired.size():
 		city.resourcesGain[resourcesProducedID[resourceID]] += resourcesProduced[resourceID] / 1000.0
-		
+
+#upgrade building	
 func UpgradeBuilding():
 	level+=1
 	for resourceID in resourcesRequired.size():

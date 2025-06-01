@@ -1,5 +1,5 @@
 extends Panel
-
+#create ui for each resource and fill with data
 func _ready() -> void:
 	for resourceToAdd in GameData.GameResources.size():
 		var resourceUIToAdd = UiManager.resourceUI.instantiate()
