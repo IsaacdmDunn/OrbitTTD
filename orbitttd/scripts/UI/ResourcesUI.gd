@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 	
 	for city in cities:
 		if city.resourcesStored.size() > 0 and city.resourcesStored[0] != null:
-			print(city.resourcesStored[resourceID])
 			stored += city.resourcesStored[resourceID]
 			max += city.resourcesStoredMax[resourceID]
 			gain += city.resourcesGain[resourceID]

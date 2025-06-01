@@ -9,7 +9,6 @@ func _ready() -> void:
 		$VBoxContainer/ScrollContainer/VBoxContainer.add_child(cityUIToAdd)
 		
 func _on_button_pressed() -> void:
-	print("ndakwndka")
 	#add new city
 	var newCityName = $"VBoxContainer/Add new city/HBoxContainer/TextEdit".text
 	$"../..".targetPlanet.AddNewCity(newCityName)

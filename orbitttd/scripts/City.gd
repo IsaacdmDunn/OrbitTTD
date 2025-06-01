@@ -22,7 +22,7 @@ func _ready():
 	
 func _process(delta: float) -> void:
 	for r in GameData.GameResources.size():
-		resourcesGain[r] = 0
+		resourcesGain[r] = 1
 		resourcesDecay[r] = GameData.resourceBaseDecay[r]
 	pop += pop * (birthRate - deathRate)
 	

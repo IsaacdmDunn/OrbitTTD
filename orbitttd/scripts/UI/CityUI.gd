@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 func AddBuildingInfoUI(building:Node2D):
 	var buildingUIToAdd = GamePrefabs.buildingUIPrefab.instantiate()
 	buildingUIToAdd.building = building
+	buildingUIToAdd.city = city
 	$Panel/HBoxContainer/Buildings/VBoxContainer/BuildingsScrollContainer/VBoxContainer.add_child(buildingUIToAdd)
 	pass
 

@@ -5,7 +5,6 @@ func _ready() -> void:
 		var resourceUIToAdd = UiManager.resourceUI.instantiate()
 		resourceUIToAdd.resourceName = GameData.resourceNames[resourceToAdd]
 		resourceUIToAdd.cities = $"../..".targetPlanet.cities
-		print(resourceUIToAdd.cities.size())
 		resourceUIToAdd.resourceID = resourceToAdd
 		for cities in $"../..".targetPlanet.cities:
 			resourceUIToAdd.stored += cities.resourcesStored[resourceToAdd]
